@@ -1,1 +1,38 @@
 /* pages/pintu/pintu.wxss */
+.view-pintu .game-title{
+  font-size: 48rpx;
+  padding: 10rpx;
+}
+.view-pintu .pic-wrapper {
+  position: relative;
+  margin: 50rpx auto;
+  font-size: 0;
+}
+.pic-wrapper .dialog-success{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 36px;
+  color: #fff;
+}
+.pic-ori{
+  margin: 20rpx;
+  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg);
+  background-repeat: no-repeat;
+}
+.pic-item {
+  box-shadow: 0 0 1rpx #000 inset;
+  background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg);
+  background-repeat: no-repeat;
+}
+.operate-wrapper{
+  margin: 10rpx 0;
+}
+.operate-wrapper .operate-item {
+  margin: 0 20rpx;
+  width: 80rpx;
+  border-bottom: 1rpx solid lightblue;
+}
