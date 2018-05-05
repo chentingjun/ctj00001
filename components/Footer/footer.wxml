@@ -1,0 +1,4 @@
+<!--components/footer/footer.wxml-->
+<view class="comp-footer">
+  {{name}}
+</view>

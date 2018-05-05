@@ -1,0 +1,7 @@
+/* pages/home/home.wxss */
+.view-home{
+  height: 100vh;
+}
+.view-home .body{
+  overflow: auto;
+}

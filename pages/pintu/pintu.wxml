@@ -1,0 +1,16 @@
+<!--pages/pintu/pintu.wxml-->
+<view class="view-pintu">
+  <view class="game-title text-center"> 拼图 </view>
+  <view class="pic-ori" style="width: {{imgW * col}}rpx;; height: {{imgW * row}}rpx; background-size: {{imgW * col}}rpx {{imgW * row}}rpx; margin: 10rpx auto;"></view>
+  <view class="pic-wrapper flexh flex-wrap flex-vcenter flex-hcenter" style="width: {{pintuW * 100}}%">
+    <view wx:for="{{picArr}}" wx:key="index" wx:for-item="pic" data-index="{{index}}" bindtap="swapPic" class="pic-item" style="height: {{pic.height}}; width: {{pic.width}}; background-position: {{pic.backgroundPosition}}; background-size: {{imgW * col}}rpx {{imgW * row}}rpx;"></view>
+    <view wx:if="{{success}}" class="dialog-success flexv flex-vcenter flex-hcenter">
+      <view> you are success </view>
+      <button type="default" size="mini" plain="plain" bindtap="initPicArr">重新开始</button>
+    </view>
+  </view>
+  <view class="operate-wrapper flexh flex-hcenter">
+    <label>row</label><input class="operate-item text-center" type="number" value="{{row}}" bindinput="rowInput" auto-focus />
+    <label>col</label><input class="operate-item text-center" type="number" value="{{col}}" bindinput="colInput" auto-focus />
+  </view>
+</view>

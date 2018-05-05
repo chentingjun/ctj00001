@@ -1,0 +1,77 @@
+/*布局*/
+/* 水平对齐 */
+.flexh {
+  display: flex;
+}
+/* 垂直对齐 */
+.flexv {
+  display: flex;
+  flex-direction: column;
+}
+.flex0 {
+  flex: none;
+}
+.flex1 {
+  flex: 1;
+}
+ /* 远端对齐 */
+.flex-between {
+  justify-content: space-between;
+}
+ /* 近端对齐 */
+.flex-around {
+  justify-content: space-around;
+}
+.flex-vstart {
+  align-items: flex-start
+}
+.flex-hstart {
+  justify-content: flex-start
+}
+ /* 多列 水平居中对齐 */
+.flex-vcenter {
+  align-items: center;
+}
+ /* 多行垂直居中对齐 */
+.flex-hcenter {
+  justify-content: center;
+}
+.flex-vend {
+  align-items: flex-end;
+}
+.flex-hend {
+  justify-content: flex-end;
+}
+.flex-self-start {
+  align-self: flex-start;
+}
+.flex-self-center {
+  align-self: center;
+}
+.flex-self-end {
+  align-self: flex-end;
+}
+/*flex换行*/
+.flex-wrap {
+  flex-wrap: wrap;
+}
+/*文本换行*/
+.break-all {
+  word-break: break-all;
+}
+/*文本pre显示*/
+.content-pro {
+  white-space: pre-wrap;
+}
+/*手形鼠标*/
+.cur-pointer {
+  cursor: pointer;
+}
+/*阴影*/
+.box-shadow {
+  box-shadow: 0 0 13px -5px #000;
+}
+/*文本居中*/
+.text-center {
+  text-align: center;
+}
