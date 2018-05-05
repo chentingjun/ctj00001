@@ -1,0 +1,4 @@
+<!--components/Header/header.wxml-->
+<view>
+  {{name}}
+</view>

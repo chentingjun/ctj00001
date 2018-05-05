@@ -1,0 +1,4 @@
+<!--components/Body/body.wxml-->
+<scroll-view scroll-y class="comp-body">
+  <slot></slot>
+</scroll-view>

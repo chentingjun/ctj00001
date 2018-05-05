@@ -1,0 +1,13 @@
+<!--pages/pintu/pintu.wxml-->
+<view>
+  <view> 拼图 </view>
+  <view class="pic-wrapper">
+    <view wx:for="rowArr" class="row">
+      <view wx:for="colArr" class="col">
+        <image src="../../images/pic.png" />
+      </view>
+    </view>
+    <input type="number" value="{{row}}" auto-focus />
+    <input type="number" value="{{col}}" auto-focus />
+  </view>
+</view>
