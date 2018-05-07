@@ -33,12 +33,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "pintu",
-					"pathName": "pages/pintu/pintu"
+					"pathName": "pages/pintu/pintu",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "logs",
+					"pathName": "pages/logs/logs",
+					"query": ""
 				}
 			]
 		}

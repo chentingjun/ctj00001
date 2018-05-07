@@ -6,6 +6,11 @@ App({
   service,
   util,
   onLaunch: function () {
+    wx.getSystemInfo({
+      success: systemInfo => {
+        this.globalData.systemInfo = systemInfo
+      }
+    })
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -38,6 +43,7 @@ App({
     })
   },
   globalData: {
+    systemInfo: null,
     userInfo: null
   }
 })

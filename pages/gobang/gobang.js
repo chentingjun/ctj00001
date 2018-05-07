@@ -1,4 +1,4 @@
-// pages/home/home.js
+// pages/gobang/gobang.js
 const app = getApp()
 const { util } = app
 Page({
@@ -7,29 +7,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navArr: []
+    pintuW: 0.8,
+    row: 10,
+    spaceW: 30,
+    rowArr: [],
+    isWho: 1, // 黑棋
+    type: 1
   },
 
-  initNav () {
-    let arr = [{
-      name: '拼图',
-      url: '/pages/pintu/pintu'
-    }]
-    util.setData(this, { navArr: arr })
-  },
-  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let screenW = 750 // 全屏宽750rpx
+    let spaceW = parseInt(screenW * this.data.pintuW / this.data.row)
+    let arr = []
+    for (let i = 0; i < this.data.row; i++) {
+      arr.push('')
+    }
+    util.setData(this, {
+      rowArr: arr,
+      spaceW: spaceW
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.initNav()
+  
   },
 
   /**
@@ -73,4 +79,8 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  downChess () {
+    let isWho = this.data.isWho
+  }
 })
