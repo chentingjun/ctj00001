@@ -1,0 +1,10 @@
+<!--pages/chessMine/chessMine.wxml-->
+<view class="chess-mine">
+  <view class="mine-clearance" style="width: {{gridW * colNum}}rpx; height: {{gridW * rowNum}}rpx; margin: 20rpx auto;">
+    <view wx:for="{{rowNum}}" wx:for-index="rowi" wx:key="{{rowi}}" style="width: {{gridW * colNum}}rpx;" class="flexh">
+      <view wx:for="{{colNum}}" wx:for-index="coli" wx:key="{{coli}}" class="mide-grid {{opened}}" style="width: {{gridW}}rpx; height: {{gridW}}rpx;">
+        {{chessArr[rowi * colNum + coli].selected}}
+      </view>
+    </view>
+  </view>
+</view>

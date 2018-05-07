@@ -1,6 +1,8 @@
 <!--pages/home/home.wxml-->
 <view class='view-home flexv flex-between'>
-  <body>
-    <image src="../../images/pic.png" />
+  <body class="flex1">
+    <view>
+      hello
+    </view>
   </body>
 </view>

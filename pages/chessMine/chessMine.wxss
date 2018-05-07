@@ -1,0 +1,5 @@
+/* pages/chessMine/chessMine.wxss */
+.chess-mine .mide-grid {
+  text-align: center;
+  box-shadow: 0 0 1px #000 inset;
+}
