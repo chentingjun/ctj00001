@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/pintu/pintu",
+    "pages/gobang/gobang",
     "pages/chessMine/chessMine"
   ],
   "window": {

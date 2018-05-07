@@ -1,0 +1,16 @@
+<!--pages/gobang/gobang.wxml-->
+<view class="view-gobang">
+  <view class="game-title text-center"> 五子棋 </view>
+  <view wx:if="{{type === 1}}" class="chess-wrapper" style="width: {{row * spaceW}}rpx; height: {{row * spaceW}}rpx;">
+    <view class="chess-grid-row flexh" wx:for="{{rowArr}}" wx:for-index="rowi" wx:key="rowi" wx:for-item="row">
+      <view class="chess-grid-col"
+        wx:for="{{rowArr}}"
+        wx:for-index="coli"
+        wx:key="coli"
+        wx:for-item="col"
+        style="width: {{spaceW}}rpx; height: {{spaceW}}rpx;"
+        bindtap="downChess">
+      </view>
+    </view>
+  </view>
+</view>
