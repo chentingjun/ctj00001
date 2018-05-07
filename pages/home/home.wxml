@@ -1,8 +1,8 @@
 <!--pages/home/home.wxml-->
 <view class='view-home flexv flex-between'>
   <body class="flex1">
-    <view class="nav-list flexh flex-wrap">
-      <navigator class="nav-item" wx:for="{{navArr}}" wx:key="{{index}}" wx:for-item="nav" url="{{nav.url}}" hover-class="none">{{nav.name}}</navigator>
+    <view class="nav-list flexh flex-wrap flex-between">
+      <navigator class="nav-item flexh flex-vcenter flex-hcenter" wx:for="{{navArr}}" wx:key="{{index}}" wx:for-item="nav" url="{{nav.url}}" hover-class="none">{{nav.name}}</navigator>
     </view>
   </body>
 </view>

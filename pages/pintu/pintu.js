@@ -1,6 +1,6 @@
 // pages/pintu/pintu.js
 const app = getApp()
-const { util } = app
+const { util, rpx2px } = app
 Page({
 
   /**
@@ -14,7 +14,8 @@ Page({
     picArr: [],
     success: false,
     timer: null,
-    time: 0 // 计时器
+    time: 0, // 计时器
+    stepNum: 0 // 计步器
   },
 
   customData: {},
@@ -83,18 +84,18 @@ Page({
     let r = this.data.row
     let c = this.data.col
     let screenW = 750 // 全屏宽750rpx
-    let imgW = parseInt(screenW * this.data.pintuW / c)
+    let imgW = rpx2px(parseInt(screenW * this.data.pintuW / c))
     let arr = []
     for (let i = 0; i < r; i++) {
       for (let j = 0; j < c; j++) {
         arr.push({
           width: imgW,
           height: imgW,
-          backgroundPosition: -j * imgW + 'rpx ' + -i * imgW + 'rpx'
+          backgroundPosition: -j * imgW + 'px ' + -i * imgW + 'px'
         })
       }
     }
-    arr[arr.length - 1].backgroundPosition = imgW + 'rpx ' + imgW + 'rpx'
+    arr[arr.length - 1].backgroundPosition = imgW + 'px ' + imgW + 'px'
     util.setData(this, {
       imgW: imgW
     }, false, () => {
@@ -110,7 +111,7 @@ Page({
     let col = Number(this.data.col)
     let r = parseInt(index / col)
     let c = index % col
-    let keyVal = this.data.imgW + 'rpx ' + this.data.imgW + 'rpx'
+    let keyVal = this.data.imgW + 'px ' + this.data.imgW + 'px'
     let clickVal = arr[index].backgroundPosition
     let isFind = false
     if (r > 0) { // 上
@@ -142,11 +143,13 @@ Page({
       }
     }
     if (isFind) {
-      let setData = { picArr: arr }
+      let setData = { picArr: arr, stepNum: this.data.stepNum + 1 }
       if (this.data.time === 0) {
         console.log('开始计时')
+        clearInterval(this.data.timer)
         setData.timer = setInterval(() => {
-          let t = this.data.time
+          let t = this.data.time + 1
+          console.log('t', t)
           util.setData(this, {time: t})
         }, 1000)
       }
@@ -160,7 +163,7 @@ Page({
    */
   rowInput (e) {
     let oRow = this.data.row
-    if (e.detail.value >= 2 && e.detail.value <= 10) {
+    if (e.detail.value >= 3 && e.detail.value <= 10) {
       util.setData(this, {
         row: e.detail.value
       }, false, () => {
@@ -178,7 +181,7 @@ Page({
    */
   colInput(e) {
     let oCol = this.data.col
-    if (e.detail.value >= 2 && e.detail.value <= 10) {
+    if (e.detail.value >= 3 && e.detail.value <= 10) {
       util.setData(this, {
         col: e.detail.value
       }, false, () => {
@@ -231,7 +234,7 @@ Page({
     for (let i = 0; i < r; i++) {
       for (let j = 0; j < c; j++) {
         let index = i * c + j
-        let backgroundPosition = -j * imgW + 'rpx ' + -i * imgW + 'rpx'
+        let backgroundPosition = -j * imgW + 'px ' + -i * imgW + 'px'
         if (backgroundPosition === arr[index].backgroundPosition) {
           successNum++
         }

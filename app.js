@@ -45,5 +45,8 @@ App({
   globalData: {
     systemInfo: null,
     userInfo: null
+  },
+  rpx2px (num) {
+    return parseInt(this.globalData.systemInfo.screenWidth / 750 * num)
   }
 })
