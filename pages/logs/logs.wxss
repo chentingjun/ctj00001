@@ -1,8 +1,10 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.log-list{
+  padding: 10rpx;
 }
 .log-item {
+  font-size: 32rpx;
   margin: 10rpx;
+}
+.log-time{
+  color: #ccc;
 }

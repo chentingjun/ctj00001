@@ -1,7 +1,6 @@
 <!--pages/home/home.wxml-->
 <view class='view-home flexv flex-between'>
-  <body>
-    <button>拼图</button>
-    <button>五子棋</button>
+  <body class="flex1">
+    <navigator wx:for="{{navArr}}" wx:key="{{index}}" wx:for-item="nav" url="{{nav.url}}" hover-class="none">{{nav.name}}</navigator>
   </body>
 </view>

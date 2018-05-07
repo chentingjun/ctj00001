@@ -43,8 +43,9 @@
 				},
 				{
 					"id": -1,
-					"name": "gobang",
-					"pathName": "pages/gobang/gobang"
+					"name": "logs",
+					"pathName": "pages/logs/logs",
+					"query": ""
 				}
 			]
 		}

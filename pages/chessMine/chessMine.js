@@ -1,23 +1,18 @@
-// pages/home/home.js
-const app = getApp()
-const { util } = app
+// pages/chessMine/chessMine.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navArr: []
+    mineBoardW: 700,
+    rowNum: 5,
+    colNum: 5,
+    chessArr: [], // 0 未点开 1 旗 2 雷 3 空白
+    mineNum: 10,
+    gridW: 50
   },
 
-  initNav () {
-    let arr = [{
-      name: '拼图',
-      url: '/pages/pintu/pintu'
-    }]
-    util.setData(this, { navArr: arr })
-  },
-  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +24,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.initNav()
+    this.initMineBoard()
   },
 
   /**
@@ -72,5 +67,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
+  }
 })
