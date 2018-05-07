@@ -9,12 +9,12 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#22dd82",
+    "navigationBarBackgroundColor": "#d81e06",
     "navigationBarTitleText": "渐行的梦",
     "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
-    "selectedColor": "#1afa29",
+    "selectedColor": "#d81e06",
     "list": [
       {
         "pagePath": "pages/home/home",

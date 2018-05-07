@@ -14,6 +14,9 @@ Page({
     let arr = [{
       name: '拼图',
       url: '/pages/pintu/pintu'
+    }, {
+      name: '五子棋',
+      url: '/pages/gobang/gobang'
     }]
     util.setData(this, { navArr: arr })
   },

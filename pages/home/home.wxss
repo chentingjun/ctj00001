@@ -6,3 +6,12 @@
   height: 100%;
   overflow: auto;
 }
+.view-home .nav-list{
+  padding: 25rpx;
+}
+.nav-list .nav-item{
+  border: 1rpx solid #d81e06;
+  width: 300rpx;
+  height: 300rpx;
+  margin: 20rpx;
+}

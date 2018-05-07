@@ -39,8 +39,8 @@
 }
 .view-pintu .reset-game {
   margin: 40rpx;
-  background-color: #22dd82;
+  background-color: #d81e06;
 }
 .view-pintu .reset-game-home {
-  background-color: #22dd82;
+  background-color: #d81e06;
 }
