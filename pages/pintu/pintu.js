@@ -12,7 +12,9 @@ Page({
     row: 3,
     col: 5,
     picArr: [],
-    success: false
+    success: false,
+    timer: null,
+    time: 0 // 计时器
   },
 
   customData: {},
@@ -21,28 +23,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initPicArr()
+    console.log('onLoad')
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.initPicArr()
+    console.log('onReady')
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('onShow')
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log('onHide')
   },
 
   /**
@@ -85,8 +88,8 @@ Page({
     for (let i = 0; i < r; i++) {
       for (let j = 0; j < c; j++) {
         arr.push({
-          width: imgW + 'rpx',
-          height: imgW + 'rpx',
+          width: imgW,
+          height: imgW,
           backgroundPosition: -j * imgW + 'rpx ' + -i * imgW + 'rpx'
         })
       }
@@ -139,10 +142,16 @@ Page({
       }
     }
     if (isFind) {
+      let setData = { picArr: arr }
+      if (this.data.time === 0) {
+        console.log('开始计时')
+        setData.timer = setInterval(() => {
+          let t = this.data.time
+          util.setData(this, {time: t})
+        }, 1000)
+      }
       this._isSuccess(arr)
-      util.setData(this, {
-        picArr: arr
-      })
+      util.setData(this, setData)
     }
   },
   /**
@@ -192,8 +201,14 @@ Page({
       arr = this._swapArr(arr, i, unsetIndex)
     }
     this._isSuccess(arr)
+    if (this.data.timer) {
+      console.log('清空定时器')
+      clearInterval(this.data.timer)
+    }
     util.setData(this, {
-      picArr: arr
+      picArr: arr,
+      time: 0,
+      timer: null
     })
   },
   /**

@@ -6,10 +6,12 @@ Page({
     logs: []
   },
   onLoad: function () {
+    let logs = [{
+      time: '2018/05/05',
+      txt: '发布第一版'
+    }]
     this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
-      })
+      logs
     })
   }
 })

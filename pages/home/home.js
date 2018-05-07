@@ -1,17 +1,23 @@
 // pages/home/home.js
+const app = getApp()
+const { util } = app
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchName: ''
+    navArr: []
   },
-  bindInputFn: function(e) {
-    this.setData({
-      searchName: e.detail.value
-    })
+
+  initNav () {
+    let arr = [{
+      name: '拼图',
+      url: '/pages/pintu/pintu'
+    }]
+    util.setData(this, { navArr: arr })
   },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -23,7 +29,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.initNav()
   },
 
   /**

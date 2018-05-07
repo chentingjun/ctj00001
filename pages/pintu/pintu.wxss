@@ -25,6 +25,7 @@
 }
 .pic-item {
   box-shadow: 0 0 1rpx #000 inset;
+  background-color: lightblue;
   background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg);
   background-repeat: no-repeat;
 }
@@ -35,4 +36,11 @@
   margin: 0 20rpx;
   width: 80rpx;
   border-bottom: 1rpx solid lightblue;
+}
+.view-pintu .reset-game {
+  margin: 40rpx;
+  background-color: #22dd82;
+}
+.view-pintu .reset-game-home {
+  background-color: #22dd82;
 }
