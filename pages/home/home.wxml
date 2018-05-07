@@ -1,6 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class='view-home flexv flex-between'>
   <body>
-    <image src="../../images/pic.png" />
+    <button>拼图</button>
+    <button>五子棋</button>
   </body>
 </view>

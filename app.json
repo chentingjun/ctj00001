@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/pintu/pintu"
+    "pages/pintu/pintu",
+    "pages/gobang/gobang"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,16 +14,25 @@
   },
   "tabBar": {
     "selectedColor": "#1afa29",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text": "分类",
-      "iconPath": "images/fenlei.png",
-      "selectedIconPath": "images/fenlei_active.png"
-    }, {
-      "pagePath": "pages/pintu/pintu",
-      "text": "拼图",
-      "iconPath": "images/pintu.png",
-      "selectedIconPath": "images/pintu_active.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "分类",
+        "iconPath": "images/fenlei.png",
+        "selectedIconPath": "images/fenlei_active.png"
+      },
+      {
+        "pagePath": "pages/pintu/pintu",
+        "text": "拼图",
+        "iconPath": "images/pintu.png",
+        "selectedIconPath": "images/pintu_active.png"
+      },
+      {
+        "pagePath": "pages/gobang/gobang",
+        "text": "五子棋",
+        "iconPath": "images/gobang.png",
+        "selectedIconPath": "images/gobang_active.png"
+      }
+    ]
   }
 }
