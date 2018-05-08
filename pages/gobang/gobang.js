@@ -1,6 +1,9 @@
 // pages/gobang/gobang.js
 const app = getApp()
-const { util } = app
+const {
+  util,
+  globalData
+} = app
 Page({
 
   /**
@@ -9,26 +12,20 @@ Page({
   data: {
     pintuW: 0.8,
     row: 10,
+    col: 10,
     spaceW: 30,
-    rowArr: [],
-    isWho: 1, // 黑棋
-    type: 1
+    chessArr: [],
+    isWho: 1, // 1黑棋 2白棋
+    type: 1,
+    whoFirst: 1,
+    chessState: 0 // 0 未开始 1 已开始 2 已结束
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let screenW = 750 // 全屏宽750rpx
-    let spaceW = parseInt(screenW * this.data.pintuW / this.data.row)
-    let arr = []
-    for (let i = 0; i < this.data.row; i++) {
-      arr.push('')
-    }
-    util.setData(this, {
-      rowArr: arr,
-      spaceW: spaceW
-    })
+    this.initChess()
   },
 
   /**
@@ -80,7 +77,54 @@ Page({
   
   },
 
-  downChess () {
-    let isWho = this.data.isWho
+  initChess () {
+    let screenW = globalData.systemInfo.screenWidth
+    let spaceW = parseInt(screenW * this.data.pintuW / this.data.row)
+    let arr = []
+    for (let i = 0; i < this.data.row; i++) {
+      arr.push([])
+      for (let j = 0; j < this.data.col; j++) {
+        arr[i].push({
+          active: 0 // 0 未下子
+        })
+      }
+    }
+    let isWho = this.data.whoFirst
+    util.setData(this, {
+      chessArr: arr,
+      spaceW: spaceW,
+      chessState: 0,
+      isWho
+    })
+  },
+
+  downChess (e) {
+    let isWho = this.data.isWho === 1 ? 2 : 1
+    let chessArr = this.data.chessArr
+    let dataObj = e.target.dataset
+    let downObj = chessArr[dataObj.row][dataObj.col]
+    if (downObj.active > 0) { return }
+    downObj.active = isWho
+    let setData = {
+      isWho,
+      chessArr
+    }
+    if (this.data.chessState === 0) {
+      setData.chessState = 1
+    }
+    console.log(isWho, dataObj.row, dataObj.col)
+    util.setData(this, setData)
+  },
+
+  initWhoFirst (e) {
+    let chessState = this.data.chessState
+    if (chessState > 0) {
+      return
+    }
+    let isWho = parseInt(e.detail.value) || 1
+    util.setData(this, {
+      whoFirst: isWho,
+      isWho
+    })
   }
 })

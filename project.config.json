@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -46,6 +46,11 @@
 					"name": "logs",
 					"pathName": "pages/logs/logs",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "gobang",
+					"pathName": "pages/gobang/gobang"
 				}
 			]
 		}

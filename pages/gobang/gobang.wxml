@@ -1,16 +1,30 @@
 <!--pages/gobang/gobang.wxml-->
 <view class="view-gobang">
   <view class="game-title text-center"> 五子棋 </view>
-  <view wx:if="{{type === 1}}" class="chess-wrapper" style="width: {{row * spaceW}}rpx; height: {{row * spaceW}}rpx;">
-    <view class="chess-grid-row flexh" wx:for="{{rowArr}}" wx:for-index="rowi" wx:key="rowi" wx:for-item="row">
-      <view class="chess-grid-col"
-        wx:for="{{rowArr}}"
+  <view wx:if="{{type === 1}}" class="chess-wrapper" style="width: {{row * spaceW}}px; height: {{row * spaceW}}px;">
+    <view class="chess-grid-row flexh" wx:for="{{chessArr}}" wx:for-index="rowi" wx:key="rowi" wx:for-item="row">
+      <view class="chess-grid-col {{col.active > 0 ? 'chesser' + col.active : ''}}"
+        wx:for="{{row}}"
         wx:for-index="coli"
         wx:key="coli"
         wx:for-item="col"
-        style="width: {{spaceW}}rpx; height: {{spaceW}}rpx;"
+        style="width: {{spaceW}}px; height: {{spaceW}}px;"
+        data-row="{{rowi}}"
+        data-col="{{coli}}"
         bindtap="downChess">
       </view>
     </view>
   </view>
+  <view class="game-operate flexh flex-vcenter" style="width: {{row * spaceW}}px;">
+    <text style="margin-right: 10rpx;">先手</text>
+    <radio-group class="radio-group flexh flex-vcenter" bindchange="initWhoFirst">
+      <label class="radio flexh flex-vcenter">
+        <radio checked="{{whoFirst === 1}}" disabled="{{chessState > 0}}" value="1"/><text>绿</text>
+      </label>
+      <label class="radio flexh flex-vcenter">
+        <radio color="#d81e06" checked="{{whoFirst === 2}}" disabled="{{chessState > 0}}" value="2"/><text>红</text>
+      </label>
+    </radio-group>
+  </view>
+  <button style="width: {{row * spaceW}}px;" type="primary" size="defaultSize" class="reset-game" hover-class="reset-game-hover" bindtap="initChess">重新开始</button>
 </view>

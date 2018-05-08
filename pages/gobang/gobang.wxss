@@ -10,3 +10,18 @@
 .view-gobang .chess-grid-col {
   box-shadow: 0 0 1px #000 inset;
 }
+.chess-grid-col.chesser1{
+  background-color: red;
+}
+.chess-grid-col.chesser2 {
+  background-color: green;
+}
+.game-operate{
+  margin: 20rpx auto;
+}
+.view-gobang .reset-game {
+  background-color: #d81e06;
+}
+.view-gobang .reset-game-home {
+  background-color: #d81e06;
+}
