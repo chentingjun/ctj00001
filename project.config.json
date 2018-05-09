@@ -50,7 +50,8 @@
 				{
 					"id": -1,
 					"name": "gobang",
-					"pathName": "pages/gobang/gobang"
+					"pathName": "pages/gobang/gobang",
+					"query": ""
 				}
 			]
 		}

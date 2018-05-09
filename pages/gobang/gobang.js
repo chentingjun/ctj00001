@@ -113,6 +113,7 @@ Page({
       setData.chessState = 1
     }
     console.log(isWho, dataObj.row, dataObj.col)
+    this.isSuccess(dataObj.row, dataObj.col)
     util.setData(this, setData)
   },
 
@@ -126,5 +127,22 @@ Page({
       whoFirst: isWho,
       isWho
     })
+  },
+
+  isSuccess (rowi, coli) {
+    console.log(rowi, coli)
+    let rowMinMax = {
+      min: rowi - 4 > 0 ? rowi - 4 : 0,
+      max: rowi + 4 > this.data.row ? this.data.row : rowi + 4
+    }
+    let colMinMax = {
+      min: coli - 4 > 0 ? coli - 4 : 0,
+      max: coli + 4 > this.data.col ? this.data.col : coli + 4
+    }
+    let arr1, arr2, arr3, arr4
+    for (let i = rowMinMax.min; i < rowMinMax.max; i++){
+      arr1.push(this.data.chessArr[i][coli])
+    }
+    console.log(rowMinMax, colMinMax)
   }
 })
