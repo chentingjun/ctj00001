@@ -18,7 +18,8 @@ Page({
     isWho: 1, // 1黑棋 2白棋
     type: 1,
     whoFirst: 1,
-    chessState: 0 // 0 未开始 1 已开始 2 已结束
+    chessState: 0, // 0 未开始 1 已开始 2 已结束
+    success: false
   },
 
   /**
@@ -99,14 +100,13 @@ Page({
   },
 
   downChess (e) {
-    let isWho = this.data.isWho === 1 ? 2 : 1
+    let isWho = this.data.isWho
     let chessArr = this.data.chessArr
     let dataObj = e.target.dataset
     let downObj = chessArr[dataObj.row][dataObj.col]
     if (downObj.active > 0) { return }
     downObj.active = isWho
     let setData = {
-      isWho,
       chessArr
     }
     if (this.data.chessState === 0) {
@@ -131,18 +131,48 @@ Page({
 
   isSuccess (rowi, coli) {
     console.log(rowi, coli)
-    let rowMinMax = {
-      min: rowi - 4 > 0 ? rowi - 4 : 0,
-      max: rowi + 4 > this.data.row ? this.data.row : rowi + 4
+    // let rowMinMax = {
+    //   min: rowi - 4 > 0 ? rowi - 4 : 0,
+    //   max: rowi + 4 > this.data.row ? this.data.row : rowi + 4
+    // }
+    // let colMinMax = {
+    //   min: coli - 4 > 0 ? coli - 4 : 0,
+    //   max: coli + 4 > this.data.col ? this.data.col : coli + 4
+    // }
+    // let arr1 = [], arr2 = [], arr3 = [], arr4 = []
+    // for (let i = rowMinMax.min; i < rowMinMax.max; i++){
+    //   arr1.push(this.data.chessArr[i][coli].active)
+    // }
+    // for (let i = colMinMax.min; i < colMinMax.max; i++) {
+    //   arr1.push(this.data.chessArr[rowi][i].active)
+    // }
+    // let nr, nc, len
+    // if (rowi - rowMinMax.min > coli - colMinMax.min) {
+    //   nc = colMinMax.min
+    //   nr = rowi - (coli - colMinMax.min)
+    // } else {
+    //   nr = rowMinMax.min
+    //   nc = coli - (rowi - rowMinMax.min)
+    // }
+    // coli - colMinMax.min
+  },
+
+  isFiveChess (arr) {
+    let isWho = this.data.isWho
+    let reg = new RegExp(isWho + '+', 'g')
+    let matchArr = arr.join('').match(reg)
+    let n = 0
+    for (let i = 0; i < matchArr.length; i++) {
+      if (matchArr[i].length > n) {
+        n = matchArr[i].length
+      }
     }
-    let colMinMax = {
-      min: coli - 4 > 0 ? coli - 4 : 0,
-      max: coli + 4 > this.data.col ? this.data.col : coli + 4
+    if (n === 5) {
+      console.log('isSuccess')
     }
-    let arr1, arr2, arr3, arr4
-    for (let i = rowMinMax.min; i < rowMinMax.max; i++){
-      arr1.push(this.data.chessArr[i][coli])
-    }
-    console.log(rowMinMax, colMinMax)
+    console.log(matchArr)
+    util.setData(this, {
+      isWho: isWho === 1 ? 2 : 1
+    })
   }
 })
