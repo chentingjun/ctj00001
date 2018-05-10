@@ -15,8 +15,7 @@
   },
   "tabBar": {
     "selectedColor": "#d81e06",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/home/home",
         "text": "分类",
         "iconPath": "images/fenlei.png",

@@ -157,12 +157,14 @@ Page({
     //   nc = coli - (rowi - rowMinMax.min)
     // }
     // coli - colMinMax.min
+    this.isFiveChess([])
   },
 
   isFiveChess (arr) {
     let isWho = this.data.isWho
     let reg = new RegExp(isWho + '+', 'g')
-    let matchArr = arr.join('').match(reg)
+    let matchArr = arr.join('').match(reg) || []
+    console.log(matchArr)
     let n = 0
     for (let i = 0; i < matchArr.length; i++) {
       if (matchArr[i].length > n) {
