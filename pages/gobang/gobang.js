@@ -130,6 +130,8 @@ Page({
   },
 
   isSuccess (rowi, coli) {
+    let gridArr = []
+    let chessArr = this.data.chessArr
     console.log(rowi, coli)
     // let rowMinMax = {
     //   min: rowi - 4 > 0 ? rowi - 4 : 0,
