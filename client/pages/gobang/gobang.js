@@ -132,36 +132,60 @@ Page({
   isSuccess (rowi, coli) {
     let gridArr = []
     let chessArr = this.data.chessArr
-    console.log(rowi, coli)
-    // let rowMinMax = {
-    //   min: rowi - 4 > 0 ? rowi - 4 : 0,
-    //   max: rowi + 4 > this.data.row ? this.data.row : rowi + 4
-    // }
-    // let colMinMax = {
-    //   min: coli - 4 > 0 ? coli - 4 : 0,
-    //   max: coli + 4 > this.data.col ? this.data.col : coli + 4
-    // }
-    // let arr1 = [], arr2 = [], arr3 = [], arr4 = []
-    // for (let i = rowMinMax.min; i < rowMinMax.max; i++){
-    //   arr1.push(this.data.chessArr[i][coli].active)
-    // }
-    // for (let i = colMinMax.min; i < colMinMax.max; i++) {
-    //   arr1.push(this.data.chessArr[rowi][i].active)
-    // }
-    // let nr, nc, len
-    // if (rowi - rowMinMax.min > coli - colMinMax.min) {
-    //   nc = colMinMax.min
-    //   nr = rowi - (coli - colMinMax.min)
-    // } else {
-    //   nr = rowMinMax.min
-    //   nc = coli - (rowi - rowMinMax.min)
-    // }
-    // coli - colMinMax.min
-    this.isFiveChess([])
+    let successNum = 0
+    let rowMinMax = {
+      min: rowi - 4 > 0 ? rowi - 4 : 0,
+      max: rowi + 4 > this.data.row - 1 ? this.data.row - 1 : rowi + 4
+    }
+    let colMinMax = {
+      min: coli - 4 > 0 ? coli - 4 : 0,
+      max: coli + 4 > this.data.col - 1 ? this.data.col- 1 : coli + 4
+    }
+    console.log(rowMinMax, colMinMax)
+    let arr = []
+    for (let i = rowMinMax.min; i <= rowMinMax.max; i++){ // 列
+      arr.push(this.data.chessArr[i][coli].active)
+    }
+    console.log('-------列-------', arr)
+    if (this.isFiveChess(arr)) { return }
+    arr = []
+    for (let i = colMinMax.min; i <= colMinMax.max; i++) { // 横
+      arr.push(this.data.chessArr[rowi][i].active)
+    }
+    console.log('-------横-------', arr)
+    if (this.isFiveChess(arr)) { return }
+    arr = []
+    let nr, nc, len
+    if (rowi - rowMinMax.min > coli - colMinMax.min) { // 左斜
+      nc = colMinMax.min
+      nr = rowi - (coli - colMinMax.min)
+    } else {
+      nr = rowMinMax.min
+      nc = coli - (rowi - rowMinMax.min)
+    }
+    while (nc < this.data.col && nr < this.data.row) {
+      arr.push(this.data.chessArr[nr++][nc++].active)
+    }
+    console.log('-------左斜-------', arr)
+    if (this.isFiveChess(arr)) { return }
+    arr = []
+    if (rowMinMax.max - rowi > coli - colMinMax.min) { // 右斜
+      nc = colMinMax.min
+      nr = rowi + (coli - colMinMax.min)
+    } else {
+      nr = rowMinMax.max
+      nc = coli - (rowMinMax.max - rowi)
+    }
+    while (nc < this.data.col && nr > -1) {
+      arr.push(this.data.chessArr[nr--][nc++].active)
+    }
+    console.log('-------右斜-------', arr)
+    if (this.isFiveChess(arr)) { return }
   },
 
   isFiveChess (arr) {
     let isWho = this.data.isWho
+    let isSuccess = false
     let reg = new RegExp(isWho + '+', 'g')
     let matchArr = arr.join('').match(reg) || []
     console.log(matchArr)
@@ -173,10 +197,12 @@ Page({
     }
     if (n === 5) {
       console.log('isSuccess')
+      isSuccess = true
     }
-    console.log(matchArr)
     util.setData(this, {
-      isWho: isWho === 1 ? 2 : 1
+      isWho: isWho === 1 ? 2 : 1,
+      success: isSuccess
     })
+    return isSuccess
   }
 })

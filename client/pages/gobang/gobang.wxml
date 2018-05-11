@@ -14,6 +14,10 @@
         bindtap="downChess">
       </view>
     </view>
+    <view wx:if="{{success}}" class="dialog-success flexv flex-vcenter flex-hcenter">
+      <view> you are success </view>
+      <button type="primary" size="mini" bindtap="initChess" style="margin-top: 30rpx;" class="reset-game" hover-class="reset-game-hover">重新开始</button>
+    </view>
   </view>
   <view class="game-operate flexh flex-vcenter" style="width: {{row * spaceW}}px;">
     <text style="margin-right: 10rpx;">先手</text>
