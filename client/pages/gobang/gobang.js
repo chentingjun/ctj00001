@@ -95,7 +95,8 @@ Page({
       chessArr: arr,
       spaceW: spaceW,
       chessState: 0,
-      isWho
+      isWho,
+      success: false
     })
   },
 
@@ -195,7 +196,7 @@ Page({
         n = matchArr[i].length
       }
     }
-    if (n === 5) {
+    if (n >= 5) {
       console.log('isSuccess')
       isSuccess = true
     }
