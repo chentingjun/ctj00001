@@ -5,6 +5,17 @@
   font-size: 32rpx;
   margin: 10rpx;
 }
+.log-title{
+  font-size: 36rpx;
+}
+.log-intro{
+  font-size: 32rpx;
+}
+.log-intro::before{
+  display: inline-block;
+  content: '--';
+}
 .log-time{
   color: #ccc;
+  font-size: 20rpx;
 }

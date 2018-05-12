@@ -10,9 +10,9 @@ Page({
     pintuW: 0.8,
     imgW: 0,
     row: 3,
+    col: 3,
     defaultImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg',
     image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg',
-    col: 5,
     picArr: [],
     success: false,
     timer: null,
@@ -93,11 +93,12 @@ Page({
         arr.push({
           width: imgW,
           height: imgW,
+          isChanged: false,
           backgroundPosition: -j * imgW + 'px ' + -i * imgW + 'px'
         })
       }
     }
-    arr[arr.length - 1].backgroundPosition = imgW + 'px ' + imgW + 'px'
+    arr[arr.length - 1].isChanged = true
     util.setData(this, {
       imgW: imgW
     }, false, () => {
@@ -113,33 +114,31 @@ Page({
     let col = Number(this.data.col)
     let r = parseInt(index / col)
     let c = index % col
-    let keyVal = this.data.imgW + 'px ' + this.data.imgW + 'px'
-    let clickVal = arr[index].backgroundPosition
     let isFind = false
     if (r > 0) { // 上
-      let changeVal = arr[index - col].backgroundPosition
-      if (changeVal === keyVal) {
+      let changeVal = arr[index - col].isChanged || false
+      if (changeVal) {
         isFind = true
         arr = this._swapArr(arr, index - col, index)
       }
     }
     if (r < this.data.row - 1 && !isFind) {
-      let changeVal = arr[index + col].backgroundPosition
-      if (changeVal === keyVal) {
+      let changeVal = arr[index + col].isChanged || false
+      if (changeVal) {
         isFind = true
         arr = this._swapArr(arr, index + col, index)
       }
     }
     if (c > 0 && !isFind) {
-      let changeVal = arr[index - 1].backgroundPosition
-      if (changeVal === keyVal) {
+      let changeVal = arr[index - 1].isChanged || false
+      if (changeVal) {
         isFind = true
         arr = this._swapArr(arr, index - 1, index)
       }
     }
     if (c < col - 1 && !isFind) {
-      let changeVal = arr[index + 1].backgroundPosition
-      if (changeVal === keyVal) {
+      let changeVal = arr[index + 1].isChanged || false
+      if (changeVal) {
         isFind = true
         arr = this._swapArr(arr, index + 1, index)
       }
@@ -243,7 +242,7 @@ Page({
       }
     }
     util.setData(this, {
-      success: successNum === r * c - 1
+      success: successNum === r * c
     })
   },
   /**

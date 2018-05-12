@@ -1,9 +1,10 @@
 <!--logs.wxml-->
 <view class="page-logs log-list flexv">
   <block wx:for="{{logs}}" wx:key="index" wx:for-item="log">
-    <view class="log-item flexh flex-between">
-      <text>{{log.txt}}</text>
-      <text class="log-time">{{log.time}}</text>
+    <view class="log-item">
+      <view class="log-title">{{log.title}}</view>
+      <view wx:for="{{log.intros}}" wx:for-item="introTxt" wx:key="{{index}}" class="log-intro">{{introTxt}}</view>
+      <view class="log-time text-right">{{log.time}}</view>
     </view>
   </block>
 </view>

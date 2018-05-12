@@ -7,7 +7,7 @@
     <text>计步：{{stepNum}}</text>
   </view>
   <view class="pic-wrapper flexh flex-wrap flex-vcenter flex-hcenter" style="width: {{pintuW * 100}}%">
-    <view wx:for="{{picArr}}" wx:key="index" wx:for-item="pic" data-index="{{index}}" bindtap="swapPic" class="pic-item" style="height: {{pic.height}}px; width: {{pic.width}}px; background-position: {{pic.backgroundPosition}}; background-size: {{imgW * col}}px {{imgW * row}}px; background-image: url({{image}});"></view>
+    <view wx:for="{{picArr}}" wx:key="index" wx:for-item="pic" data-index="{{index}}" bindtap="swapPic" class="pic-item {{pic.isChanged ? 'is-changed' : ''}}" style="height: {{pic.height}}px; width: {{pic.width}}px; background-position: {{pic.backgroundPosition}}; background-size: {{imgW * col}}px {{imgW * row}}px; background-image: url({{image}});"></view>
     <view wx:if="{{success}}" class="dialog-success flexv flex-vcenter flex-hcenter">
       <view> you are success </view>
       <button type="primary" size="mini" bindtap="initPicArr" style="margin-top: 30rpx;" class="reset-game" hover-class="reset-game-hover">重新开始</button>
