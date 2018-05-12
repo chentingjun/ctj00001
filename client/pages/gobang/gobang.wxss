@@ -38,27 +38,27 @@
   z-index: 1;
 }
 .chess-grid-col.chesser1::before{
-  position: relative;
-  display: inline-block;
+  position: absolute;
   content: '';
   width: 80%;
   height: 80%;
-  margin-left: 10%;
-  margin-top: 10%;
+  left: 10%;
+  top: 10%;
   border-radius: 50%;
-  background-color: green;
+  background-color: #000;
+  box-shadow: 0 0 1px #fff inset;
   z-index: 1;
 }
 .chess-grid-col.chesser2::before{
-  position: relative;
-  display: inline-block;
+  position: absolute;
   content: '';
   width: 80%;
   height: 80%;
-  margin-left: 10%;
-  margin-top: 10%;
+  left: 10%;
+  top: 10%;
   border-radius: 50%;
-  background-color: red;
+  background-color: #fff;
+  box-shadow: 0 0 1px #000 inset;
   z-index: 1;
 }
 .game-operate{

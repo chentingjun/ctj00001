@@ -25,11 +25,11 @@
     <view class="flexh flex-vcenter">
       <text style="margin-right: 10rpx;">先手</text>
       <radio-group class="radio-group flexh flex-vcenter" bindchange="initWhoFirst">
-        <label class="radio flexh flex-vcenter">
-          <radio checked="{{whoFirst === 1}}" disabled="{{chessState > 0}}" value="1"/><text>绿</text>
+        <label class="radio flexh flex-vcenter" style="margin-right: 20rpx;">
+          <radio checked="{{whoFirst === 1}}" disabled="{{chessState > 0}}" value="1"/><text>黑</text>
         </label>
         <label class="radio flexh flex-vcenter">
-          <radio color="#d81e06" checked="{{whoFirst === 2}}" disabled="{{chessState > 0}}" value="2"/><text>红</text>
+          <radio color="#d81e06" checked="{{whoFirst === 2}}" disabled="{{chessState > 0}}" value="2"/><text>白</text>
         </label>
       </radio-group>
     </view>

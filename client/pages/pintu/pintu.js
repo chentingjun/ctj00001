@@ -109,7 +109,7 @@ Page({
    * 交换图片
    */
   swapPic (e) {
-    let index = e.target.dataset.index
+    let index = e.currentTarget.dataset.index
     let arr = this.data.picArr
     let col = Number(this.data.col)
     let r = parseInt(index / col)
@@ -249,7 +249,7 @@ Page({
    * 更换背景图
    */
   changeBg (e) {
-    let flag = Number(e.target.dataset.flag) || 0
+    let flag = Number(e.currentTarget.dataset.flag) || 0
     if (flag === 0) {
       console.log('恢复默认图')
       util.setData(this, {

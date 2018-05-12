@@ -11,8 +11,8 @@ Page({
    */
   data: {
     pintuW: 0.8,
-    row: 10,
-    col: 10,
+    row: 16,
+    col: 16,
     spaceW: 30,
     chessArr: [],
     isWho: 1, // 1黑棋 2白棋
@@ -108,7 +108,7 @@ Page({
     let isWho = this.data.isWho
     let historyArr = this.data.historyArr
     let chessArr = this.data.chessArr
-    let dataObj = e.target.dataset
+    let dataObj = e.currentTarget.dataset
     let downObj = chessArr[dataObj.row][dataObj.col]
     if (downObj.active > 0) { return }
     let redoArr = []

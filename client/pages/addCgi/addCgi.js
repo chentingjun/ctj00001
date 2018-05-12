@@ -29,7 +29,7 @@ Page({
     },
 
     copyCode: function (e) {
-        var codeId = e.target.dataset.codeId
+        var codeId = e.currentTarget.dataset.codeId
         wx.setClipboardData({
             data: code[codeId - 1],
             success: function () {
