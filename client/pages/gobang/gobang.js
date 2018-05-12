@@ -19,7 +19,9 @@ Page({
     type: 1,
     whoFirst: 1,
     chessState: 0, // 0 未开始 1 已开始 2 已结束
-    success: false
+    success: false,
+    historyArr: [],
+    redoArr: []
   },
 
   /**
@@ -95,6 +97,8 @@ Page({
       chessArr: arr,
       spaceW: spaceW,
       chessState: 0,
+      historyArr: [],
+      redoArr: [],
       isWho,
       success: false
     })
@@ -102,13 +106,22 @@ Page({
 
   downChess (e) {
     let isWho = this.data.isWho
+    let historyArr = this.data.historyArr
     let chessArr = this.data.chessArr
     let dataObj = e.target.dataset
     let downObj = chessArr[dataObj.row][dataObj.col]
     if (downObj.active > 0) { return }
+    let redoArr = []
     downObj.active = isWho
+    historyArr.push({
+      row: dataObj.row,
+      col: dataObj.col,
+      active: isWho
+    })
     let setData = {
-      chessArr
+      chessArr,
+      historyArr,
+      redoArr
     }
     if (this.data.chessState === 0) {
       setData.chessState = 1
@@ -202,8 +215,47 @@ Page({
     }
     util.setData(this, {
       isWho: isWho === 1 ? 2 : 1,
-      success: isSuccess
+      success: isSuccess,
+      chessState: 2
     })
     return isSuccess
+  },
+
+  // 悔棋
+  prevHistory () {
+    let historyArr = this.data.historyArr
+    if (historyArr.length === 0) return
+    let chessArr = this.data.chessArr
+    let redoArr = this.data.redoArr
+    let obj = historyArr.pop()
+    redoArr.push({...obj})
+    let isWho = chessArr[obj.row][obj.col].active
+    chessArr[obj.row][obj.col].active = 0
+    let setData = {
+      chessArr,
+      isWho,
+      historyArr,
+      redoArr
+    }
+    util.setData(this, setData)
+  },
+
+  // 撤消悔棋
+  nextHistory () {
+    let redoArr = this.data.redoArr
+    if (redoArr.length === 0) return
+    let chessArr = this.data.chessArr
+    let historyArr = this.data.historyArr
+    let obj = redoArr.pop()
+    historyArr.push({ ...obj })
+    let isWho = obj.active === 1 ? 2 : 1
+    chessArr[obj.row][obj.col].active = obj.active
+    let setData = {
+      chessArr,
+      isWho,
+      historyArr,
+      redoArr
+    }
+    util.setData(this, setData)
   }
 })

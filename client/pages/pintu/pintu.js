@@ -10,6 +10,8 @@ Page({
     pintuW: 0.8,
     imgW: 0,
     row: 3,
+    defaultImg: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg',
+    image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525515008278&di=0254800ac930c713f20dab254198e106&imgtype=0&src=http%3A%2F%2Fwww.luobou.com%2Fzhuti%2FUploadPic%2F2013-8%2F2013818103721113.jpg',
     col: 5,
     picArr: [],
     success: false,
@@ -243,5 +245,32 @@ Page({
     util.setData(this, {
       success: successNum === r * c - 1
     })
+  },
+  /**
+   * 更换背景图
+   */
+  changeBg (e) {
+    let flag = Number(e.target.dataset.flag) || 0
+    if (flag === 0) {
+      console.log('恢复默认图')
+      util.setData(this, {
+        image: this.data.defaultImg
+      })
+    } else {
+      console.log('更换背景图')
+      wx.chooseImage({
+        count: 1,
+        success: (res) => {
+          console.log(res.tempFilePaths)
+          let img = this.data.defaultImg
+          if (res.tempFilePaths.length > 0) {
+            img = res.tempFilePaths[0]
+            util.setData(this, {
+              image: img
+            })
+          }
+        }
+      })
+    }
   }
 })

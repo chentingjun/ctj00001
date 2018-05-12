@@ -2,33 +2,41 @@
 <view class="view-gobang">
   <view class="game-title text-center"> 五子棋 </view>
   <view wx:if="{{type === 1}}" class="chess-wrapper" style="width: {{row * spaceW}}px; height: {{row * spaceW}}px;">
-    <view class="chess-grid-row flexh" wx:for="{{chessArr}}" wx:for-index="rowi" wx:key="rowi" wx:for-item="row">
-      <view class="chess-grid-col {{col.active > 0 ? 'chesser' + col.active : ''}}"
-        wx:for="{{row}}"
+    <view class="chess-grid-row flexh" wx:for="{{chessArr}}" wx:for-index="rowi" wx:key="rowi" wx:for-item="rowGrid">
+      <view class="chess-grid-col {{colGrid.active > 0 ? 'chesser' + colGrid.active : ''}}"
+        wx:for="{{rowGrid}}"
         wx:for-index="coli"
         wx:key="coli"
-        wx:for-item="col"
+        wx:for-item="colGrid"
         style="width: {{spaceW}}px; height: {{spaceW}}px;"
         data-row="{{rowi}}"
         data-col="{{coli}}"
         bindtap="downChess">
+        <view class="grid-row"></view>
+        <view class="grid-col"></view>
       </view>
     </view>
-    <view wx:if="{{success}}" class="dialog-success flexv flex-vcenter flex-hcenter">
+    <view wx:if="{{success}}" class="dialog-success flexv flex-vcenter flex-hcenter text-center">
       <view> you are success </view>
       <button type="primary" size="mini" bindtap="initChess" style="margin-top: 30rpx;" class="reset-game" hover-class="reset-game-hover">重新开始</button>
     </view>
   </view>
-  <view class="game-operate flexh flex-vcenter" style="width: {{row * spaceW}}px;">
-    <text style="margin-right: 10rpx;">先手</text>
-    <radio-group class="radio-group flexh flex-vcenter" bindchange="initWhoFirst">
-      <label class="radio flexh flex-vcenter">
-        <radio checked="{{whoFirst === 1}}" disabled="{{chessState > 0}}" value="1"/><text>绿</text>
-      </label>
-      <label class="radio flexh flex-vcenter">
-        <radio color="#d81e06" checked="{{whoFirst === 2}}" disabled="{{chessState > 0}}" value="2"/><text>红</text>
-      </label>
-    </radio-group>
+  <view class="game-operate" style="width: {{row * spaceW}}px;">
+    <view class="flexh flex-vcenter">
+      <text style="margin-right: 10rpx;">先手</text>
+      <radio-group class="radio-group flexh flex-vcenter" bindchange="initWhoFirst">
+        <label class="radio flexh flex-vcenter">
+          <radio checked="{{whoFirst === 1}}" disabled="{{chessState > 0}}" value="1"/><text>绿</text>
+        </label>
+        <label class="radio flexh flex-vcenter">
+          <radio color="#d81e06" checked="{{whoFirst === 2}}" disabled="{{chessState > 0}}" value="2"/><text>红</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="flexh flex-vcenter flex-between" style="margin: 10rpx 0;">
+      <view wx:if="{{historyArr.length > 0 && chessState === 1}}" bindtap="prevHistory" class="btn btn-primary reset-game" type="primary" hover-class="reset-game-hover">悔棋</view>
+      <view wx:if="{{redoArr.length > 0 && chessState === 1}}" bindtap="nextHistory" class="btn btn-primary reset-game" hover-class="reset-game-hover">撤消悔棋</view>
+    </view>
   </view>
   <button style="width: {{row * spaceW}}px;" type="primary" size="defaultSize" class="reset-game" hover-class="reset-game-hover" bindtap="initChess">重新开始</button>
 </view>

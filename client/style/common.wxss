@@ -1,3 +1,20 @@
+.btn {
+  position: relative;
+  display: block;
+  padding: 8px 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: #000000;
+  background-color: #F8F8F8;
+}
+.btn.btn-primary {
+  color: #fff;
+  background-color:#1AAD19;
+}
 /*布局*/
 /* 水平对齐 */
 .flexh {
