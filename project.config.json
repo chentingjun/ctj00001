@@ -44,6 +44,12 @@
 					"name": "gobang",
 					"pathName": "pages/gobang/gobang",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "chat",
+					"pathName": "pages/chat/chat",
+					"query": ""
 				}
 			]
 		}

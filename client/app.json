@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/pintu/pintu",
     "pages/gobang/gobang",
-    "pages/chessMine/chessMine"
+    "pages/chessMine/chessMine",
+    "pages/chat/chat"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +16,8 @@
   },
   "tabBar": {
     "selectedColor": "#d81e06",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/home/home",
         "text": "分类",
         "iconPath": "images/fenlei.png",

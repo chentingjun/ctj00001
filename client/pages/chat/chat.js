@@ -1,41 +1,47 @@
-// pages/home/home.js
+// pages/chat/chat.js
 const app = getApp()
-const { util } = app
+const { qcloud } = app
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navArr: []
+  
   },
 
-  initNav () {
-    let arr = [{
-      name: '拼图',
-      url: '/pages/pintu/pintu'
-    }, {
-      name: '五子棋',
-      url: '/pages/gobang/gobang'
-    }, {
-      name: 'chat',
-      url: '/pages/chat/chat'
-    }]
-    util.setData(this, { navArr: arr })
-  },
-  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let con = new qcloud.Tunnel('https://nvwzl3rr.qcloud.la', 'wss://nvwzl3rr.ws.qcloud.la')
+    con.open()
+    con.emit('hello')
+    // wx.connectSocket({
+    //   url: 'wss://nvwzl3rr.ws.qcloud.la',
+    //   data: {
+    //     x: '',
+    //     y: ''
+    //   },
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   protocols: ['protocol1'],
+    //   method: "GET",
+    //   success: res => {
+    //     console.log(res)
+    //   }
+    // })
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.initNav()
+  
   },
 
   /**
@@ -78,5 +84,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
+  }
 })

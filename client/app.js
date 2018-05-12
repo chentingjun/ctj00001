@@ -7,6 +7,7 @@ const util = require('./utils/util.js');
 App({
     service,
     util,
+    qcloud,
     onLaunch: function () {
         wx.getSystemInfo({
             success: systemInfo => {

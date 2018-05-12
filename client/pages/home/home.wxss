@@ -13,4 +13,5 @@
   border: 1rpx solid #d81e06;
   width: 300rpx;
   height: 300rpx;
+  margin-bottom: 50rpx;
 }
