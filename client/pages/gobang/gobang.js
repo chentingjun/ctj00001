@@ -200,6 +200,7 @@ Page({
   isFiveChess (arr) {
     let isWho = this.data.isWho
     let isSuccess = false
+    let chessState = this.data.chessState
     let reg = new RegExp(isWho + '+', 'g')
     let matchArr = arr.join('').match(reg) || []
     console.log(matchArr)
@@ -212,11 +213,12 @@ Page({
     if (n >= 5) {
       console.log('isSuccess')
       isSuccess = true
+      chessState = 2
     }
     util.setData(this, {
       isWho: isWho === 1 ? 2 : 1,
       success: isSuccess,
-      chessState: 2
+      chessState
     })
     return isSuccess
   },
