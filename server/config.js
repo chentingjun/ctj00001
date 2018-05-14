@@ -3,7 +3,7 @@ const CONF = {
     rootPathname: '',
 
     // 微信小程序 App ID
-    appId: 'wxd65cc7478fcff57f',
+    appId: '',
 
     // 微信小程序 App Secret
     appSecret: '',
@@ -21,25 +21,24 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        pass: 'wxd65cc7478fcff57f',
+        pass: 'wxb366c43b3a096ade',
         char: 'utf8mb4'
     },
 
     cos: {
         /**
-         * 地区简称
+         * 区域
          * @查看 https://cloud.tencent.com/document/product/436/6224
          */
         region: 'ap-guangzhou',
         // Bucket 名称
-        fileBucket: 'qcloudtest',
+        fileBucket: 'wximg',
         // 文件夹
         uploadFolder: ''
     },
 
     // 微信登录态有效期
-    wxLoginExpires: 7200,
-    wxMessageToken: 'abcdefgh'
+    wxLoginExpires: 7200
 }
 
-module.exports = CONF
+module.exports = process.env.NODE_ENV === 'local' ? Object.assign({}, CONF, require('./config.local')) : CONF;

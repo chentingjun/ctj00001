@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/index/index",
+    "pages/addCgi/addCgi",
     "pages/logs/logs",
     "pages/pintu/pintu",
     "pages/gobang/gobang",

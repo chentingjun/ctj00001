@@ -50,6 +50,18 @@
 					"name": "chat",
 					"pathName": "pages/chat/chat",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "addCgi",
+					"pathName": "pages/addCgi/addCgi",
+					"query": ""
 				}
 			]
 		}
